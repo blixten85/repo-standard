@@ -2,7 +2,7 @@ name: CI Autofix
 
 on:
   workflow_run:
-    workflows: ["Xcode-bygge (iOS + macOS)"]
+    workflows: ["<namn på repots CI-workflow, t.ex. \"CI\" eller \"Xcode-bygge (iOS + macOS)\">"]
     types: [completed]
 
 permissions:
