@@ -47,24 +47,29 @@ en required status check som aldrig återupptas av sig själv).
 
 **Lösning:** varje repos `renovate.json`-`schedule` MÅSTE vara ett smalt
 (≤30 min) tidsfönster som inte krockar med något annat repos fönster.
-Nuvarande utrullning (2026-07-11, alla inom 22:00–08:00 svensk tid för att
-inte krocka med aktiva arbetstimmar 08:00–22:00):
+Utrullningen (uppdaterad 2026-07-12) är konsoliderad till två nätter,
+onsdag och lördag natt, eftersom det empiriskt är de nätter operatören har
+minst egen Claude-kvot kvarstående — det minimerar konkurrensen om samma
+konto/kvot mellan Renovate-PR-uppföljning och operatörens egen
+dagtidsanvändning. Utöver schemaläggningen grupperas nu även alla
+patch/minor-uppdateringar till en enda PR per körning (istället för en PR
+per paket), vilket minskar antalet CodeRabbit-granskningar ytterligare.
 
 | Repo | Fönster |
 |---|---|
-| bastion | var dag 23:00–23:30 |
-| scraper | var dag 01:00–01:30 |
-| pastebinit | söndag 22:00–22:30 |
-| routines-relay | måndag 00:00–00:30 |
-| product-describer | tisdag 03:00–03:30 |
+| bastion | onsdag 22:00–22:30 |
+| scraper | onsdag 23:00–23:30 |
+| product-describer | onsdag 00:00–00:30 |
+| ops-hub | onsdag 01:00–01:30 |
+| repo-standard | onsdag 02:00–02:30 |
+| docker-idempotent-update | onsdag 03:00–03:30 |
 | plex_clear_watchlist | onsdag 04:00–04:30 |
-| docker-idempotent-update | torsdag 05:00–05:30 |
-| filtered-movies | fredag 06:00–06:30 |
-| politiker-kontakter | lördag 02:00–02:30 |
-| product-describer-cloudflare | lördag 07:00–07:30 |
-| politiker-webapp | söndag 05:00–05:30 |
-| ops-hub | lördag 04:30–05:00 |
-| repo-standard | tisdag 06:00–06:30 |
+| pastebinit | lördag 22:00–22:30 |
+| routines-relay | lördag 23:00–23:30 |
+| politiker-kontakter | lördag 00:00–00:30 |
+| politiker-webapp | lördag 01:00–01:30 |
+| filtered-movies | lördag 02:00–02:30 |
+| product-describer-cloudflare | lördag 03:00–03:30 |
 
 **Nytt repo:** välj ett ledigt fönster (minst 1 timmes marginal till
 närmaste granne) och uppdatera tabellen ovan i denna README när du lägger
