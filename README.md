@@ -63,6 +63,8 @@ inte krocka med aktiva arbetstimmar 08:00–22:00):
 | politiker-kontakter | lördag 02:00–02:30 |
 | product-describer-cloudflare | lördag 07:00–07:30 |
 | politiker-webapp | söndag 05:00–05:30 |
+| ops-hub | lördag 04:30–05:00 |
+| repo-standard | tisdag 06:00–06:30 |
 
 **Nytt repo:** välj ett ledigt fönster (minst 1 timmes marginal till
 närmaste granne) och uppdatera tabellen ovan i denna README när du lägger
