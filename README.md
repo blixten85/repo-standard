@@ -45,8 +45,12 @@ Flera repons Renovate-scheman som fyrar samtidigt kan därför lätt
 överskrida kvoten, vilket lämnar PR:er permanent blockerade (CodeRabbit är
 en required status check som aldrig återupptas av sig själv).
 
-**Lösning:** varje repos `renovate.json`-`schedule` MÅSTE vara ett smalt
-(≤30 min) tidsfönster som inte krockar med något annat repos fönster.
+**Lösning:** varje repos `renovate.json`-`schedule` MÅSTE vara ett
+2-timmarsfönster med hela timmar — Renovate ignorerar minuter (granularitet
+är minst en timme) och Mend-appen kör ungefär timvis, så smalare fönster
+träffas opålitligt eller aldrig. Fönstren staggras med 1 timmes överlapp:
+max två repon delar en given timme, vilket ger max ~4 CodeRabbit-
+granskningar/timme mot kvoten 5/h.
 Utrullningen (uppdaterad 2026-07-12) är konsoliderad till två nätter,
 onsdag och lördag natt, eftersom det empiriskt är de nätter operatören har
 minst egen Claude-kvot kvarstående — det minimerar konkurrensen om samma
@@ -57,23 +61,23 @@ per paket), vilket minskar antalet CodeRabbit-granskningar ytterligare.
 
 | Repo | Fönster |
 |---|---|
-| bastion | onsdag 22:00–22:30 |
-| scraper | onsdag 23:00–23:30 |
-| product-describer | onsdag 00:00–00:30 |
-| ops-hub | onsdag 01:00–01:30 |
-| repo-standard | onsdag 02:00–02:30 |
-| docker-idempotent-update | onsdag 03:00–03:30 |
-| plex_clear_watchlist | onsdag 04:00–04:30 |
-| pastebinit | lördag 22:00–22:30 |
-| routines-relay | lördag 23:00–23:30 |
-| politiker-kontakter | lördag 00:00–00:30 |
-| politiker-webapp | lördag 01:00–01:30 |
-| filtered-movies | lördag 02:00–02:30 |
-| product-describer-cloudflare | lördag 03:00–03:30 |
+| bastion | onsdag 20:00–22:00 |
+| scraper | onsdag 22:00–24:00 |
+| product-describer | onsdag 00:00–02:00 |
+| ops-hub | onsdag 01:00–03:00 |
+| repo-standard | onsdag 02:00–04:00 |
+| docker-idempotent-update | onsdag 03:00–05:00 |
+| plex_clear_watchlist | onsdag 04:00–06:00 |
+| pastebinit | lördag 20:00–22:00 |
+| routines-relay | lördag 22:00–24:00 |
+| politiker-kontakter | lördag 00:00–02:00 |
+| politiker-webapp | lördag 01:00–03:00 |
+| filtered-movies | lördag 02:00–04:00 |
+| product-describer-cloudflare | lördag 03:00–05:00 |
 
-**Nytt repo:** välj ett ledigt fönster (minst 1 timmes marginal till
-närmaste granne) och uppdatera tabellen ovan i denna README när du lägger
-till repot.
+**Nytt repo:** välj ett 2-timmarsfönster vars timmar delas av högst ett
+annat repo och uppdatera tabellen ovan i denna README när du lägger till
+repot.
 
 ## Snabbstart för ett nytt repo
 
