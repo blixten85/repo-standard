@@ -52,7 +52,7 @@ jobs:
 
   security-autofix:
     runs-on: ubuntu-latest
-    if: contains(github.head_ref, 'alert-autofix')
+    if: startsWith(github.head_ref, 'alert-autofix')
     steps:
       - name: Enable auto-merge for security fixes
         run: |
