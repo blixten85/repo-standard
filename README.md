@@ -12,7 +12,7 @@ behövs till ett nytt repo istället för att bygga från grunden varje gång.
 | `SECURITY.md` | Standard säkerhetspolicy |
 | `AGENTS.md` / `CLAUDE.md` | AI-agent-instruktioner — **fyll i platshållarna** (`<repo-name>`, konventioner) innan användning |
 | `.coderabbit.yaml` | Aktiverar CodeRabbits auto-review |
-| `.github/renovate.json` | Dependency-uppdateringar. **`schedule`-fältet MÅSTE sättas till ett unikt tidsfönster** — se "CodeRabbit rate-limit & schemaläggning" nedan |
+| `.github/dependabot.yml` | Dependency-uppdateringar (github-actions). **`schedule`-fältet MÅSTE sättas till ett unikt tidsfönster** — se "CodeRabbit rate-limit & schemaläggning" nedan |
 | `.github/pull_request_template.md`, `.github/ISSUE_TEMPLATE/*` | Standardmallar |
 | `.github/labeler.yml`, `.github/FUNDING.yml` | Auto-labeling, sponsorlänkar |
 | `.github/workflows/*.yml` | 10 standard-workflows (se nedan) |
@@ -41,13 +41,14 @@ CodeRabbits granskningskvot är **5 granskningar/timme, kontogemensamt för
 hela blixten85-organisationen** (Pro-plan) — inte per repo, inte
 konfigurerbar via API (bekräftat 2026-07-11, se
 [docs.coderabbit.ai/reference/configuration](https://docs.coderabbit.ai/reference/configuration)).
-Flera repons Renovate-scheman som fyrar samtidigt kan därför lätt
+Flera repons Dependabot-scheman som fyrar samtidigt kan därför lätt
 överskrida kvoten, vilket lämnar PR:er permanent blockerade (CodeRabbit är
 en required status check som aldrig återupptas av sig själv).
 
-**Lösning:** varje repos `renovate.json`-`schedule` MÅSTE vara ett smalt
-(≤30 min) tidsfönster som inte krockar med något annat repos fönster.
-Utrullningen (uppdaterad 2026-07-12) är konsoliderad till två nätter,
+**Lösning:** varje repos `dependabot.yml`-`schedule` MÅSTE vara ett smalt
+tidsfönster som inte krockar med något annat repos fönster.
+Utrullningen (uppdaterad 2026-07-15, migrerad från Renovate till
+Dependabot) är konsoliderad till två nätter,
 onsdag och lördag natt, eftersom det empiriskt är de nätter operatören har
 minst egen Claude-kvot kvarstående — det minimerar konkurrensen om samma
 konto/kvot mellan Renovate-PR-uppföljning och operatörens egen
