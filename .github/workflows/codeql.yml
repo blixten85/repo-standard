@@ -30,7 +30,14 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@7188fc363630916deb702c7fdcf4e481b751f97a # v4
         with:
-          languages: python, javascript
+          # repo-standard självt innehåller bara GitHub Actions-workflows,
+          # inte python/javascript-källkod som mallens exempelvärde antog —
+          # "python, javascript" hittade inget att analysera och gav ett
+          # konfigurationsfel varje körning. `actions` matchar vad som
+          # faktiskt finns här och ger en meningsfull skanning av
+          # workflow-filerna (script-injection m.m.) som andra repon sedan
+          # ärver via mallen.
+          languages: actions
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@7188fc363630916deb702c7fdcf4e481b751f97a # v4
