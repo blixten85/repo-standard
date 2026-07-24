@@ -49,7 +49,7 @@ Sources: [AGENTS.md:1-25](AGENTS.md#L1-L25), [CLAUDE.md:1-10](CLAUDE.md#L1-L10)
 The project defines 10 standard workflows located in `.github/workflows/` to handle core repository automation.
 
 ### Standard Workflows
-- **Core Automation:** Includes `auto-commit.yml`, `auto-label.yml`, `auto-merge.yml`, `auto-rebase.yml`, and `auto-release.yml`.
+- **Core Automation:** Includes `auto-commit.yml`, `auto-label.yml`, `auto-merge.yml`, `auto-rebase.yml`, `auto-release.yml`, and `ci-autofix.yml`.
 - **Security & Analysis:** `codeql.yml` for static analysis and `security-alerts-sync.yml`.
 - **Review Resilience:** `coderabbit-rewake.yml` is used to re-trigger CodeRabbit reviews if they are blocked by rate limits.
 - **Claude Integration:** `claude-assign-trigger.yml` triggers responses based on the `ask-claude` label.

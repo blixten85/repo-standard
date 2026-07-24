@@ -46,7 +46,7 @@ This diagram illustrates the process from discovery to public disclosure:
 ```mermaid
 flowchart TD
     A[Vulnerability Discovered] --> B{Public Issue?}
-    B -- Yes --> C[STOP: Delete and report privately]
+    B -- Yes --> C[STOP: Contact maintainers immediately and use private reporting channel]
     B -- No --> D[Report via Email or GitHub Security Tab]
     D --> E[Acknowledgment - 48h]
     E --> F[Assessment - 5 days]

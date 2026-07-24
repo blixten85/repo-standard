@@ -35,9 +35,17 @@ The automation is driven by specific GitHub Action workflows located in `.github
 | :--- | :--- |
 | `security-alerts-sync.yml` | Coordinates the synchronization of security alerts across the repository. |
 | `codeql.yml` | Performs static analysis to detect injection-sensitive surfaces and other vulnerabilities. |
-| `dependabot.yml` | Automatically updates third-party dependencies to patch known vulnerabilities. |
 
 Sources: [README.md:21-26](README.md#L21-L26), [.github/workflows/security-alerts-sync.yml](.github/workflows/security-alerts-sync.yml)
+
+### Dependency Management Configuration
+Dependabot configuration is managed under `.github/`.
+
+| Configuration File | Responsibility |
+| :--- | :--- |
+| `dependabot.yml` | Automatically updates third-party dependencies to patch known vulnerabilities. |
+
+Sources: [README.md:12](README.md#L12)
 
 ### Automated Dependency Management
 Dependabot is used to monitor third-party dependencies. To avoid rate-limiting issues with automated review tools like CodeRabbit, `repo-standard` enforces a strict scheduling policy for these updates.
@@ -85,7 +93,7 @@ Sources: [SECURITY.md:39-44](SECURITY.md#L39-L44), [AGENTS.md:14-19](AGENTS.md#L
 Security standards are enforced through GitHub Branch Rulesets, which ensure that no code bypasses the security checks defined in the synchronization workflows.
 
 ### Branch Protection Rules
-The `branch-ruleset-template.json` defines the mandatory checks that must pass before code can be merged into the `main` branch. This serves as the final gate for the security syncing process.
+The `branch-ruleset-template.json` defines the mandatory checks that must pass before code can be merged into the `main` branch. This serves as the final gate for the security syncing process. Note that CodeQL Analysis and security-alerts-sync workflows are advisory unless their specific status contexts are configured as required checks in the ruleset.
 
 ```mermaid
 sequenceDiagram
@@ -103,7 +111,7 @@ sequenceDiagram
     GH->>Main: Merge if all checks pass
 ```
 
-The sequence diagram illustrates how security checks are integrated into the PR lifecycle as required status checks.
+The sequence diagram illustrates how security checks are integrated into the PR lifecycle. Non-fast-forward pushes are prohibited by the ruleset, and CodeQL is required only when its status context is explicitly configured.
 
 Sources: [branch-ruleset-template.json:30-45](branch-ruleset-template.json#L30-L45), [apply-ruleset.sh:13-16](apply-ruleset.sh#L13-L16)
 

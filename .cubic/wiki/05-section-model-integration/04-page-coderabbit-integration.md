@@ -8,12 +8,12 @@ wiki_page_id: "page-coderabbit-integration"
 
 The following files were used as context for generating this wiki page:
 
-- [.coderabbit.yaml](.coderabbit.yaml)
-- [README.md](README.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [apply-ruleset.sh](apply-ruleset.sh)
-- [AGENTS.md](AGENTS.md)
-- [SECURITY.md](SECURITY.md)
+- [.coderabbit.yaml](../../../.coderabbit.yaml)
+- [README.md](../../../README.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
+- [AGENTS.md](../../../AGENTS.md)
+- [SECURITY.md](../../../SECURITY.md)
 </details>
 
 # CodeRabbit Integration Setup

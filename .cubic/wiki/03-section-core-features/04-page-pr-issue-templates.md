@@ -79,7 +79,7 @@ flowchart TD
     Public -- No --> Private[Report Privately]
     Private --> Email[dev@denied.se]
     Private --> GH_Security[GitHub Security Tab]
-    GH_Security --> Assess[Assessment within 5 days]
+    GH_Security --> Assess[Assessment within 5 business days]
     Assess --> Fix[Fix Implementation]
 ```
 

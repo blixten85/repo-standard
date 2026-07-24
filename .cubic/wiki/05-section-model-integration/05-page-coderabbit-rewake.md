@@ -8,12 +8,12 @@ wiki_page_id: "page-coderabbit-rewake"
 
 The following files were used as context for generating this wiki page:
 
-- [.github/workflows/coderabbit-rewake.yml](.github/workflows/coderabbit-rewake.yml)
-- [README.md](README.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [AGENTS.md](AGENTS.md)
-- [apply-ruleset.sh](apply-ruleset.sh)
-- [SECURITY.md](SECURITY.md)
+- [.github/workflows/coderabbit-rewake.yml](../../../.github/workflows/coderabbit-rewake.yml)
+- [README.md](../../../README.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [AGENTS.md](../../../AGENTS.md)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
+- [SECURITY.md](../../../SECURITY.md)
 </details>
 
 # CodeRabbit Rewake Workflow
@@ -79,7 +79,7 @@ While the rewake workflow automates the retry, the initial setup of these protec
 Sources: [apply-ruleset.sh:1-6](apply-ruleset.sh#L1-L6), [AGENTS.md:14-20](AGENTS.md#L14-L20)
 
 ### Dependency Scheduling Strategy
-To prevent the Rewake workflow from being overwhelmed, repositories are assigned specific tidsfönster (time windows) for Dependabot updates.
+To prevent the Rewake workflow from being overwhelmed, repositories are assigned specific time windows for Dependabot updates. The table below shows a representative sample; see [Dependabot Configuration](../06-section-infrastructure/01-page-dependabot-config.md) for the complete registry of all 13 repository schedules.
 
 | Repository | Scheduled Window (UTC/CET) |
 | :--- | :--- |
@@ -92,7 +92,7 @@ Sources: [README.md:46-59](README.md#L46-L59)
 
 ## Implementation Details
 
-The rewake mechanism is defined in `.github/workflows/coderabbit-rewake.yml`. Its primary purpose is to "triggar om CodeRabbit-granskning på PR:er som fastnat" (re-trigger CodeRabbit reviews on stuck PRs).
+The rewake mechanism is defined in `.github/workflows/coderabbit-rewake.yml`. Its primary purpose is to re-trigger CodeRabbit reviews on PRs that have become stuck due to rate limiting.
 
 Sources: [README.md:27-29](README.md#L27-L29)
 

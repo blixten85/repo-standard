@@ -100,7 +100,7 @@ The labeling system is supported by branch protection rules defined in `branch-r
 }
 ```
 
-Sources: [branch-ruleset-template.json:44-55](branch-ruleset-template.json#L44-L55), [apply-ruleset.sh:15-18](apply-ruleset.sh#L15-L18)
+Sources: [branch-ruleset-template.json:35-44](branch-ruleset-template.json#L35-L44), [apply-ruleset.sh:1-12](apply-ruleset.sh#L1-L12)
 
 ### Setup and Deployment
 To apply the labeling and protection standards to a new repository, the `apply-ruleset.sh` script is utilized. This script posts the ruleset configuration to the GitHub API for a target repository. It is explicitly noted that this script must be run by a human operator, as branch protection changes are blocked for AI agents.

@@ -8,12 +8,12 @@ wiki_page_id: "page-dependabot-config"
 
 The following files were used as context for generating this wiki page:
 
-- [README.md](README.md)
-- [.github/dependabot.yml](.github/dependabot.yml)
-- [AGENTS.md](AGENTS.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [apply-ruleset.sh](apply-ruleset.sh)
-- [SECURITY.md](SECURITY.md)
+- [README.md](../../../README.md)
+- [.github/dependabot.yml](../../../.github/dependabot.yml)
+- [AGENTS.md](../../../AGENTS.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
+- [SECURITY.md](../../../SECURITY.md)
 </details>
 
 # Dependabot Configuration

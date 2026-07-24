@@ -48,7 +48,7 @@ flowchart TD
     end
 
     AA -- "Can create" --> AC
-    AC -- "Must bypass" --> BR
+    AC -- "Must pass through" --> BR
     BR -- "Protects" --> Main
     CR -- "Required for" --> BR
 ```

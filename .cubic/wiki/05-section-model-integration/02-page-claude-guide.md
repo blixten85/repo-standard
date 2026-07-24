@@ -8,12 +8,12 @@ wiki_page_id: "page-claude-guide"
 
 The following files were used as context for generating this wiki page:
 
-- [CLAUDE.md](CLAUDE.md)
-- [AGENTS.md](AGENTS.md)
-- [README.md](README.md)
-- [SECURITY.md](SECURITY.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [apply-ruleset.sh](apply-ruleset.sh)
+- [CLAUDE.md](../../../CLAUDE.md)
+- [AGENTS.md](../../../AGENTS.md)
+- [README.md](../../../README.md)
+- [SECURITY.md](../../../SECURITY.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
 </details>
 
 # Claude Code Conventions
@@ -109,8 +109,9 @@ Sources: [README.md:41-76](README.md#L41-L76)
 
 ### Standard Workflows
 The repository includes 10 core workflows for automation:
-*  **Maintenance**: `auto-commit`, `auto-label`, `auto-merge`, `auto-rebase`, `auto-release`.
+*  **Maintenance**: `auto-commit`, `auto-label`, `auto-merge`, `auto-rebase`, `auto-release`, `ci-autofix`.
 *  **Security**: `codeql.yml` (static analysis), `security-alerts-sync.yml`.
+*  **Review Resilience**: `coderabbit-rewake.yml`.
 *  **Claude Integration**: `claude-assign-trigger.yml` uses the `ask-claude` label to trigger agent interaction safely.
 
 Sources: [README.md:26-38](README.md#L26-L38)
@@ -140,7 +141,7 @@ The `apply-ruleset.sh` script automates the deployment of these rules.
 
 ```bash
 #!/bin/bash
-REPO="${1:?Usage: ./apply-ruleset.sh <repo-namn>}"
+REPO="${1:?Usage: ./apply-ruleset.sh <repo-name>}"
 gh api --method POST "repos/blixten85/$REPO/rulesets" --input "$(dirname "$0")/branch-ruleset-template.json"
 ```
 

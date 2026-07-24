@@ -8,12 +8,12 @@ wiki_page_id: "page-claude-assign-trigger"
 
 The following files were used as context for generating this wiki page:
 
-- [.github/workflows/claude-assign-trigger.yml](.github/workflows/claude-assign-trigger.yml)
-- [README.md](README.md)
-- [AGENTS.md](AGENTS.md)
-- [CLAUDE.md](CLAUDE.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [apply-ruleset.sh](apply-ruleset.sh)
+- [.github/workflows/claude-assign-trigger.yml](../../../.github/workflows/claude-assign-trigger.yml)
+- [README.md](../../../README.md)
+- [AGENTS.md](../../../AGENTS.md)
+- [CLAUDE.md](../../../CLAUDE.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
 </details>
 
 # Claude Assign Trigger Mechanism
@@ -85,7 +85,7 @@ sequenceDiagram
     Git->>Trig: Execute Workflow
     Trig->>Git: Post Trigger Comment
     Git->>AI: Agent Notified
-    AI->>Git: Push Changes/Updates
+    AI->>Git: Push feature-branch changes / update PR
     Git->>RS: Trigger Required Checks (CodeRabbit, etc.)
     RS-->>Git: Status Pending/Pass
 ```

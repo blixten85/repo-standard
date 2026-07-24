@@ -85,9 +85,9 @@ Security is enforced through a strict ruleset defined in `branch-ruleset-templat
 
 ### Ruleset Logic
 The ruleset specifies that:
-- **Fast-forwarding** and **Deletions** are prohibited on `main`.
+- **Non-fast-forward pushes** and **Deletions** are prohibited on `main`.
 - **Pull Requests** require at least one approving review and resolution of all threads.
-- **Status Checks** must pass, including CodeRabbit (and by extension, the security status represented by workflows like CodeQL).
+- **Status Checks** must pass, including CodeRabbit. CodeQL is required only when its status context is explicitly configured in the ruleset.
 
 ```mermaid
 graph TD

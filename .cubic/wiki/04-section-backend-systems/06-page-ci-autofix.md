@@ -74,7 +74,7 @@ Sources: [branch-ruleset-template.json:1-53](branch-ruleset-template.json#L1-L53
 
 ## Implementation Details
 
-The application of these automation standards is managed through the `apply-ruleset.sh` script, which interactively applies the JSON template to a target repository using the GitHub CLI (`gh api`).
+The application of these automation standards is managed through the `apply-ruleset.sh` script, which requires a positional repository argument and directly invokes `gh api` to apply the JSON template to a target repository.
 
 ```bash
 #!/bin/bash

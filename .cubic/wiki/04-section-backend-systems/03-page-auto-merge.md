@@ -97,7 +97,7 @@ While AI agents are permitted to create branches and open PRs, they are explicit
 Sources: [AGENTS.md:12-23](AGENTS.md#L12-L23), [apply-ruleset.sh:2-5](apply-ruleset.sh#L2-L5)
 
 ### Vulnerability Management
-Security is maintained through automated scanning (CodeQL) and a private reporting policy. The auto-merge workflow only proceeds if security alerts and dependency vulnerabilities are addressed, as defined in the `SECURITY.md` guidelines.
+Security is maintained through automated scanning (CodeQL) and a private reporting policy. The project's security policy goals, as outlined in `SECURITY.md` and `README.md`, emphasize addressing security alerts and dependency vulnerabilities, though specific CodeQL or security-alert required checks are not explicitly documented in the current ruleset configuration.
 Sources: [SECURITY.md:1-20](SECURITY.md#L1-L20), [README.md:21-23](README.md#L21-L23)
 
 ## Summary

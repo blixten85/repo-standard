@@ -8,12 +8,12 @@ wiki_page_id: "page-ai-agents"
 
 The following files were used as context for generating this wiki page:
 
-- [AGENTS.md](AGENTS.md)
-- [README.md](README.md)
-- [CLAUDE.md](CLAUDE.md)
-- [SECURITY.md](SECURITY.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [apply-ruleset.sh](apply-ruleset.sh)
+- [AGENTS.md](../../../AGENTS.md)
+- [README.md](../../../README.md)
+- [CLAUDE.md](../../../CLAUDE.md)
+- [SECURITY.md](../../../SECURITY.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
 </details>
 
 # General AI Agent Guide
@@ -49,8 +49,9 @@ flowchart TD
     BR -->|Push Changes| Tests[CI Tests]
     Tests -->|Success| PR[Pull Request]
     PR -->|Trigger| CR[CodeRabbit Review]
-    CR -->|Approval| Merge[Merge to Main]
-    
+    CR -->|Status check passes| ApprovalStep[Human Approval]
+    ApprovalStep -->|Approving review| Merge[Merge to Main]
+
     subgraph Forbidden Actions
         Agent -.-x|Direct Push| Main[(main branch)]
         Agent -.-x|Bypass| Rules[Branch Ruleset]

@@ -8,12 +8,12 @@ wiki_page_id: "page-dependabot-scheduling"
 
 The following files were used as context for generating this wiki page:
 
-- [README.md](README.md)
-- [SECURITY.md](SECURITY.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [apply-ruleset.sh](apply-ruleset.sh)
-- [AGENTS.md](AGENTS.md)
-- [CLAUDE.md](CLAUDE.md)
+- [README.md](../../../README.md)
+- [SECURITY.md](../../../SECURITY.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
+- [AGENTS.md](../../../AGENTS.md)
+- [CLAUDE.md](../../../CLAUDE.md)
 </details>
 
 # Dependency Scheduling & Rate Limits
@@ -64,6 +64,9 @@ Each repository must be assigned a unique 30-minute window with a minimum 1-hour
 | pastebinit | 22:00 – 22:30 | Saturday |
 | routines-relay | 23:00 – 23:30 | Saturday |
 | politiker-kontakter | 00:00 – 00:30 | Saturday |
+| politiker-webapp | 01:00 – 01:30 | Saturday |
+| filtered-movies | 02:00 – 02:30 | Saturday |
+| product-describer-cloudflare | 03:00 – 03:30 | Saturday |
 
 Sources: [README.md:45-64](README.md#L45-L64)
 
@@ -111,6 +114,7 @@ Sources: [apply-ruleset.sh:9-12](apply-ruleset.sh#L9-L12), [AGENTS.md:12-19](AGE
 The repository defines clear boundaries for AI agents (e.g., Claude) regarding the modification of these schedules and limits. While agents are allowed to modify code and open PRs, they are strictly forbidden from changing GitHub organization settings, disabling workflows, or pushing directly to protected branches.
 
 ### Agent Permissions Summary
+
 | Category | Allowed Actions | Forbidden Actions |
 |---|---|---|
 | Development | Create branches, Modify code, Run tests, Open PRs | Push to main, Merge PRs, Delete branches |

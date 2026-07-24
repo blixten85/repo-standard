@@ -20,7 +20,7 @@ The following files were used as context for generating this wiki page:
 
 Customizing template functionality within the `repo-standard` ecosystem involves adapting a "gold standard" repository structure to specific project needs. The template provides a foundational set of GitHub Actions, security policies, and AI agent instructions that require manual configuration to ensure operational stability and compliance with organizational standards.
 
-The customization process primary focuses on three areas: configuring AI agent behavior via specialized Markdown guides, establishing unique maintenance windows to manage resource quotas, and applying branch protection rulesets through automated scripts and manual API adjustments.
+The customization process primarily focuses on three areas: configuring AI agent behavior via specialized Markdown guides, establishing unique maintenance windows to manage resource quotas, and applying branch protection rulesets through automated scripts and manual API adjustments.
 
 Sources: [README.md:1-6](README.md#L1-L6), [CLAUDE.md](CLAUDE.md), [AGENTS.md](AGENTS.md)
 
@@ -100,8 +100,17 @@ The standard ruleset (`branch-ruleset-template.json`) enforces specific requirem
 Sources: [branch-ruleset-template.json:10-53](branch-ruleset-template.json#L10-L53)
 
 ### Manual CI Extensions
-After the initial application, developers must manually add project-specific CI job names (e.g., `lint`, `test`) to the `required_status_checks` list via the GitHub API:
-`gh api --method PUT repos/blixten85/[repo]/rulesets/<id>`
+After the initial application, developers must manually add project-specific CI job names (e.g., `lint`, `test`) to the `required_status_checks` list. This requires fetching the current ruleset JSON, editing the `rules[].parameters.required_status_checks` array to include the new job contexts, and then pushing the updated ruleset back using the full JSON payload:
+
+```bash
+# Fetch the current ruleset
+gh api repos/blixten85/<repo>/rulesets/<id> > ruleset.json
+
+# Edit ruleset.json to add your CI job names to rules[].parameters.required_status_checks
+
+# Apply the updated ruleset
+gh api --method PUT repos/blixten85/<repo>/rulesets/<id> --input ruleset.json
+```
 
 Sources: [README.md:70-72](README.md#L70-L72), [apply-ruleset.sh:13-15](apply-ruleset.sh#L13-L15)
 

@@ -77,11 +77,16 @@ Rulesets are applied using the `apply-ruleset.sh` script. However, because branc
 
 ```bash
 # Applying the initial template
-./apply-ruleset.sh <repo-namn>
+./apply-ruleset.sh <repo-name>
 
 # Manually adding custom checks to the existing ruleset
-gh api --method PUT repos/blixten85/<repo>/rulesets/<id> \
-  -f "parameters[required_status_checks][][context]=test"
+# First, fetch the current ruleset
+gh api repos/blixten85/<repo>/rulesets/<id> > ruleset.json
+
+# Edit ruleset.json to add custom CI job names to rules[].parameters.required_status_checks
+
+# Apply the updated ruleset with the full JSON body
+gh api --method PUT repos/blixten85/<repo>/rulesets/<id> --input ruleset.json
 ```
 
 Sources: [apply-ruleset.sh:1-11](apply-ruleset.sh#L1-L11), [README.md:82-84](README.md#L82-L84)

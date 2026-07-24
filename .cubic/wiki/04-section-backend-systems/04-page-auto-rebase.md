@@ -20,7 +20,7 @@ The following files were used as context for generating this wiki page:
 
 The Auto-rebase workflow is a core automation component of the `repo-standard` template, designed to maintain clean commit histories across the organization's repositories. It functions as part of a suite of standard workflows that ensure consistency and streamline development operations.
 
-This workflow is specifically integrated into the project's branch protection strategy, which favors non-linear history management through rebase and squash operations. By automating the rebase process, the system reduces manual overhead for developers and ensures that Pull Requests (PRs) remain compatible with the target branch's current state.
+This workflow is specifically integrated into the project's branch protection strategy, which supports linear and clean history management through rebase and squash operations. By automating the rebase process, the system reduces manual overhead for developers and ensures that Pull Requests (PRs) remain compatible with the target branch's current state.
 
 Sources: [README.md:21-25](README.md#L21-L25), [branch-ruleset-template.json:15-30](branch-ruleset-template.json#L15-L30)
 
