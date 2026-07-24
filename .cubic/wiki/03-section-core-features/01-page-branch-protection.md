@@ -8,12 +8,12 @@ wiki_page_id: "page-branch-protection"
 
 The following files were used as context for generating this wiki page:
 
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [README.md](README.md)
-- [AGENTS.md](AGENTS.md)
-- [SECURITY.md](SECURITY.md)
-- [CLAUDE.md](CLAUDE.md)
-- [apply-ruleset.sh](apply-ruleset.sh)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [README.md](../../../README.md)
+- [AGENTS.md](../../../AGENTS.md)
+- [SECURITY.md](../../../SECURITY.md)
+- [CLAUDE.md](../../../CLAUDE.md)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
 </details>
 
 # Branch Protection Ruleset
@@ -22,7 +22,7 @@ The Branch Protection Ruleset is a core component of the `repo-standard` framewo
 
 This system establishes a standardized workflow where AI agents are granted specific operational permissions while being strictly prohibited from modifying branch protection settings or merging code directly. Manual intervention by an operator is required for ruleset application and modification to maintain human oversight over critical security and governance configurations.
 
-Sources: [README.md:1-6](README.md#L1-L6), [README.md:21-23](README.md#L21-L23), [AGENTS.md:10-23](AGENTS.md#L10-L23), [apply-ruleset.sh:2-5](apply-ruleset.sh#L2-L5)
+Sources: [README.md:1-6](../../../README.md#L1-L6), [README.md:21-23](../../../README.md#L21-L23), [AGENTS.md:10-23](../../../AGENTS.md#L10-L23), [apply-ruleset.sh:2-5](../../../apply-ruleset.sh#L2-L5)
 
 ## Core Configuration and Enforcement
 
@@ -37,7 +37,7 @@ The ruleset is defined in a JSON template and targets the primary development br
 | `enforcement` | active | The ruleset is live and blocking non-compliant actions. |
 | `include` | `refs/heads/main` | The specific branch targeted by the protection rules. |
 
-Sources: [branch-ruleset-template.json:2-15](branch-ruleset-template.json#L2-L15)
+Sources: [branch-ruleset-template.json:2-15](../../../branch-ruleset-template.json#L2-L15)
 
 ### Ruleset Deployment Flow
 
@@ -54,7 +54,7 @@ flowchart TD
 
 *This diagram illustrates the manual path required to apply protection rules to a new repository.*
 
-Sources: [apply-ruleset.sh:7-13](apply-ruleset.sh#L7-L13), [README.md:73-83](README.md#L73-L83)
+Sources: [apply-ruleset.sh:7-13](../../../apply-ruleset.sh#L7-L13), [README.md:73-83](../../../README.md#L73-L83)
 
 ## Pull Request and Review Requirements
 
@@ -66,7 +66,7 @@ The ruleset mandates a structured Pull Request (PR) workflow to ensure code qual
 *  **Thread Resolution:** All review comments and threads must be resolved.
 *  **Merge Methods:** Only `squash` and `rebase` methods are permitted; standard merges are disabled to maintain a clean history.
 
-Sources: [branch-ruleset-template.json:18-32](branch-ruleset-template.json#L18-L32)
+Sources: [branch-ruleset-template.json:18-32](../../../branch-ruleset-template.json#L18-L32)
 
 ### Required Status Checks
 A critical component of the protection ruleset is the integration of automated checks. By default, **CodeRabbit** is a required status check. Because it is required, if a review fails to trigger or finishes in a blocked state, the PR is permanently blocked until manually re-triggered.
@@ -87,7 +87,7 @@ sequenceDiagram
 
 *Sequence showing how CodeRabbit acts as a gatekeeper for the main branch.*
 
-Sources: [branch-ruleset-template.json:42-53](branch-ruleset-template.json#L42-L53), [README.md:34-40](README.md#L34-L40)
+Sources: [branch-ruleset-template.json:42-53](../../../branch-ruleset-template.json#L42-L53), [README.md:34-40](../../../README.md#L34-L40)
 
 ## AI Agent Restrictions and Permissions
 
@@ -102,11 +102,11 @@ The project defines clear boundaries for AI agents (such as Claude) through `AGE
 | Run tests | Delete branches |
 | Open PRs | Disable workflows or modify secrets |
 
-Sources: [AGENTS.md:10-23](AGENTS.md#L10-L23)
+Sources: [AGENTS.md:10-23](../../../AGENTS.md#L10-L23)
 
 These restrictions are reflected in the `apply-ruleset.sh` script, which notes that branch-protection changes via API are blocked for agents in the organization under the "CI Bypass" category.
 
-Sources: [apply-ruleset.sh:2-5](apply-ruleset.sh#L2-L5), [AGENTS.md:21](AGENTS.md#L21)
+Sources: [apply-ruleset.sh:2-5](../../../apply-ruleset.sh#L2-L5), [AGENTS.md:21](../../../AGENTS.md#L21)
 
 ## Automation and Scheduling
 
@@ -121,10 +121,10 @@ Each repository must be assigned a unique 30-minute window for updates to avoid 
 | scraper | 23:00–23:30 | Wednesday |
 | politiker-webapp | 01:00–01:30 | Saturday |
 
-Sources: [README.md:42-68](README.md#L42-L68)
+Sources: [README.md:42-68](../../../README.md#L42-L68)
 
 ## Conclusion
 
 The Branch Protection Ruleset in `repo-standard` provides a robust framework for maintaining repository integrity. By combining JSON-based rule templates (`branch-ruleset-template.json`), manual deployment scripts (`apply-ruleset.sh`), and strict AI agent guidelines (`AGENTS.md`), the system ensures that the `main` branch remains stable, secure, and under human control while leveraging AI for development tasks.
 
-Sources: [README.md:73-86](README.md#L73-L86), [apply-ruleset.sh:11-13](apply-ruleset.sh#L11-L13)
+Sources: [README.md:73-86](../../../README.md#L73-L86), [apply-ruleset.sh:11-13](../../../apply-ruleset.sh#L11-L13)

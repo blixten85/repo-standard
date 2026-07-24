@@ -8,12 +8,12 @@ wiki_page_id: "page-codeql"
 
 The following files were used as context for generating this wiki page:
 
-- [.github/workflows/codeql.yml](.github/workflows/codeql.yml)
-- [README.md](README.md)
-- [SECURITY.md](SECURITY.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [apply-ruleset.sh](apply-ruleset.sh)
-- [AGENTS.md](AGENTS.md)
+- [.github/workflows/codeql.yml](../../../.github/workflows/codeql.yml)
+- [README.md](../../../README.md)
+- [SECURITY.md](../../../SECURITY.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
+- [AGENTS.md](../../../AGENTS.md)
 </details>
 
 # CodeQL Analysis Setup
@@ -22,7 +22,7 @@ The following files were used as context for generating this wiki page:
 
 The CodeQL Analysis Setup is a core component of the `repo-standard` repository, serving as a template for automated security scanning across the `blixten85` organization. Its primary purpose is to identify vulnerabilities, particularly injection-sensitive areas, by performing semantic analysis of the source code. CodeQL is integrated as a standard GitHub Actions workflow, providing automated security oversight for public repositories.
 
-Sources: [README.md:27-29](README.md#L27-L29), [SECURITY.md:24-27](SECURITY.md#L24-L27)
+Sources: [README.md:27-29](../../../README.md#L27-L29), [SECURITY.md:24-27](../../../SECURITY.md#L24-L27)
 
 ## Workflow Architecture and Integration
 
@@ -35,7 +35,7 @@ The analysis system is built upon the following elements:
 - **Security Policy:** Defined in `SECURITY.md`, establishing the scope of what needs protection, such as SSH transport, authentication, and OAuth integrations.
 - **Branch Protection:** Integrated via `branch-ruleset-template.json`, which ensures that security checks are respected before code is merged into the `main` branch.
 
-Sources: [README.md:21-31](README.md#L21-L31), [SECURITY.md:18-27](SECURITY.md#L18-L27), [branch-ruleset-template.json:1-12](branch-ruleset-template.json#L1-L12)
+Sources: [README.md:21-31](../../../README.md#L21-L31), [SECURITY.md:18-27](../../../SECURITY.md#L18-L27), [branch-ruleset-template.json:1-12](../../../branch-ruleset-template.json#L1-L12)
 
 ### Process Flow
 
@@ -55,7 +55,7 @@ flowchart TD
 ```
 
 The diagram shows the parallel execution of CodeQL alongside other CI workflows and its eventual role in the branch protection logic.
-Sources: [README.md:21-29](README.md#L21-L29), [branch-ruleset-template.json:43-55](branch-ruleset-template.json#L43-L55)
+Sources: [README.md:21-29](../../../README.md#L21-L29), [branch-ruleset-template.json:43-55](../../../branch-ruleset-template.json#L43-L55)
 
 ## Configuration and Deployment
 
@@ -66,7 +66,7 @@ The setup is intended to be copied from `repo-standard` to new repositories. Whi
 2. The `apply-ruleset.sh` script is executed manually to establish branch protection on `main`.
 3. Repo-specific CI job names (e.g., `lint`, `test`) are manually added to the `required_status_checks`.
 
-Sources: [README.md:83-93](README.md#L83-L93), [apply-ruleset.sh:10-14](apply-ruleset.sh#L10-L14)
+Sources: [README.md:83-93](../../../README.md#L83-L93), [apply-ruleset.sh:10-14](../../../apply-ruleset.sh#L10-L14)
 
 ### Security Scope and Responsibilities
 
@@ -77,7 +77,7 @@ Sources: [README.md:83-93](README.md#L83-L93), [apply-ruleset.sh:10-14](apply-ru
 | Workflows | Automation of security scans | `.github/workflows/` |
 | Dependabot | Automatic dependency updates | `.github/dependabot.yml` |
 
-Sources: [SECURITY.md:18-27](SECURITY.md#L18-L27), [README.md:21-25](README.md#L21-L25)
+Sources: [SECURITY.md:18-27](../../../SECURITY.md#L18-L27), [README.md:21-25](../../../README.md#L21-L25)
 
 ## Branch Protection and Security Enforcement
 
@@ -104,14 +104,14 @@ graph TD
 ```
 
 The diagram visualizes the hierarchy of rules applied to the main branch to ensure code quality and security.
-Sources: [branch-ruleset-template.json:13-57](branch-ruleset-template.json#L13-L57), [apply-ruleset.sh:11-13](apply-ruleset.sh#L11-L13)
+Sources: [branch-ruleset-template.json:13-57](../../../branch-ruleset-template.json#L13-L57), [apply-ruleset.sh:11-13](../../../apply-ruleset.sh#L11-L13)
 
 ### Agent Restrictions
 AI agents are explicitly forbidden from modifying security-critical settings. This is a manual-only process to prevent unauthorized changes to the security posture.
 - **Forbidden:** Modify secrets, change GitHub org settings, or merge PRs.
 - **Execution:** `apply-ruleset.sh` must be run by a human operator, not an agent.
 
-Sources: [AGENTS.md:12-18](AGENTS.md#L12-L18), [apply-ruleset.sh:2-4](apply-ruleset.sh#L2-L4)
+Sources: [AGENTS.md:12-18](../../../AGENTS.md#L12-L18), [apply-ruleset.sh:2-4](../../../apply-ruleset.sh#L2-L4)
 
 ## Summary
 

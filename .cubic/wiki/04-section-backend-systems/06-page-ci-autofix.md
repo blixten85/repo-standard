@@ -8,18 +8,18 @@ wiki_page_id: "page-ci-autofix"
 
 The following files were used as context for generating this wiki page:
 
-- [.github/workflows/ci-autofix.yml](.github/workflows/ci-autofix.yml)
-- [README.md](README.md)
-- [AGENTS.md](AGENTS.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [apply-ruleset.sh](apply-ruleset.sh)
+- [.github/workflows/ci-autofix.yml](../../../.github/workflows/ci-autofix.yml)
+- [README.md](../../../README.md)
+- [AGENTS.md](../../../AGENTS.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
 </details>
 
 # CI Autofix Automation
 
 CI Autofix Automation is a core component of the `repo-standard` framework designed to automate code corrections and maintenance tasks. It functions as part of a suite of "standard workflows" that ensure repository consistency across the `blixten85` organization by automatically addressing issues identified during Continuous Integration (CI) cycles.
 
-Sources: [README.md:21-25](README.md#L21-L25)
+Sources: [README.md:21-25](../../../README.md#L21-L25)
 
 ## System Architecture
 
@@ -29,7 +29,7 @@ The automation is built upon GitHub Actions and is integrated into the repositor
 
 The `ci-autofix.yml` workflow is categorized as "kärnautomation" (core automation). It is designed to work in tandem with branch protection rules defined in the project's ruleset templates.
 
-Sources: [README.md:22-25](README.md#L22-L25), [branch-ruleset-template.json:1-40](branch-ruleset-template.json#L1-L40)
+Sources: [README.md:22-25](../../../README.md#L22-L25), [branch-ruleset-template.json:1-40](../../../branch-ruleset-template.json#L1-L40)
 
 ```mermaid
 flowchart TD
@@ -43,7 +43,7 @@ flowchart TD
 ```
 
 The diagram above illustrates how the autofix workflow interacts with standard CI checks and the CodeRabbit review process to ensure code quality before merging.
-Sources: [README.md:25-30](README.md#L25-L30), [.github/workflows/ci-autofix.yml](.github/workflows/ci-autofix.yml)
+Sources: [README.md:25-30](../../../README.md#L25-L30), [.github/workflows/ci-autofix.yml](../../../.github/workflows/ci-autofix.yml)
 
 ## Configuration and Constraints
 
@@ -59,7 +59,7 @@ While CI workflows can modify code and run tests, there are strict boundaries fo
 | **Repository Ops** | Run tests, Open PRs | Delete branches, Disable workflows |
 | **Security** | - | Modify secrets, Change Org settings |
 
-Sources: [AGENTS.md:9-25](AGENTS.md#L9-L25)
+Sources: [AGENTS.md:9-25](../../../AGENTS.md#L9-L25)
 
 ### Branch Protection Rules
 
@@ -70,7 +70,7 @@ The project uses a standard ruleset (`branch-ruleset-template.json`) to protect 
 *  **Merge Methods:** Restricted to `squash` and `rebase`.
 *  **Status Checks:** Strict policy requiring the "CodeRabbit" context (Integration ID: 347564).
 
-Sources: [branch-ruleset-template.json:1-53](branch-ruleset-template.json#L1-L53), [apply-ruleset.sh:10-15](apply-ruleset.sh#L10-L15)
+Sources: [branch-ruleset-template.json:1-53](../../../branch-ruleset-template.json#L1-L53), [apply-ruleset.sh:10-15](../../../apply-ruleset.sh#L10-L15)
 
 ## Implementation Details
 
@@ -93,7 +93,7 @@ A critical aspect of the automation ecosystem is the management of the CodeRabbi
 | Wednesday Night | `bastion`, `scraper`, `ops-hub`, `repo-standard`, etc. |
 | Saturday Night | `pastebinit`, `routines-relay`, `filtered-movies`, etc. |
 
-Sources: [README.md:37-65](README.md#L37-L65)
+Sources: [README.md:37-65](../../../README.md#L37-L65)
 
 ## Summary
 

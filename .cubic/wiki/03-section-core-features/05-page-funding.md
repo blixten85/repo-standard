@@ -8,12 +8,12 @@ wiki_page_id: "page-funding"
 
 The following files were used as context for generating this wiki page:
 
-- [.github/FUNDING.yml](.github/FUNDING.yml)
-- [README.md](README.md)
-- [SECURITY.md](SECURITY.md)
-- [AGENTS.md](AGENTS.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [apply-ruleset.sh](apply-ruleset.sh)
+- [.github/FUNDING.yml](../../../.github/FUNDING.yml)
+- [README.md](../../../README.md)
+- [SECURITY.md](../../../SECURITY.md)
+- [AGENTS.md](../../../AGENTS.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
 </details>
 
 # Funding Configuration
@@ -21,7 +21,7 @@ The following files were used as context for generating this wiki page:
 The Funding Configuration is a standardized component of the `repo-standard` repository, designed to provide a consistent mechanism for displaying sponsorship links across all `blixten85` projects. It serves as a "gold standard" template that ensures every new repository includes the necessary metadata to facilitate financial support for the maintainers.
 
 This configuration is primarily managed through GitHub-native files located in the `.github` directory. It integrates with the broader repository standards, which include security policies, AI agent guidelines, and automated branch protection rules to maintain project integrity while seeking community support.
-Sources: [README.md:1-12](README.md#L1-L12), [.github/FUNDING.yml](.github/FUNDING.yml)
+Sources: [README.md:1-12](../../../README.md#L1-L12), [.github/FUNDING.yml](../../../.github/FUNDING.yml)
 
 ## Architecture and Components
 
@@ -37,7 +37,7 @@ The primary mechanism for funding is the `FUNDING.yml` file. In the `repo-standa
 | Standardization Docs | `README.md` | Provides instructions for copying the funding template to new repos. |
 | Security Context | `SECURITY.md` | Outlines the scope of protection for repository configuration files. |
 
-Sources: [README.md:9-12](README.md#L9-L12), [SECURITY.md:33-37](SECURITY.md#L33-L37)
+Sources: [README.md:9-12](../../../README.md#L9-L12), [SECURITY.md:33-37](../../../SECURITY.md#L33-L37)
 
 ### Integration with Repository Setup
 
@@ -54,7 +54,7 @@ flowchart TD
 ```
 
 The diagram shows the workflow for initializing a repository with the standard configuration, including funding and protection rules.
-Sources: [README.md:92-108](README.md#L92-L108), [apply-ruleset.sh:9-13](apply-ruleset.sh#L9-L13)
+Sources: [README.md:92-108](../../../README.md#L92-L108), [apply-ruleset.sh:9-13](../../../apply-ruleset.sh#L9-L13)
 
 ## Security and Governance
 
@@ -65,12 +65,12 @@ AI agents and automated tools have specific boundaries regarding repository sett
 
 | Action | Agent Permission | Source Reference |
 | :--- | :--- | :--- |
-| Modify Code | Allowed | [AGENTS.md:10](AGENTS.md#L10) |
-| Open PRs | Allowed | [AGENTS.md:12](AGENTS.md#L12) |
-| Change Org Settings | **Forbidden** | [AGENTS.md:19](AGENTS.md#L19) |
-| Modify Secrets | **Forbidden** | [AGENTS.md:18](AGENTS.md#L18) |
+| Modify Code | Allowed | [AGENTS.md:10](../../../AGENTS.md#L10) |
+| Open PRs | Allowed | [AGENTS.md:12](../../../AGENTS.md#L12) |
+| Change Org Settings | **Forbidden** | [AGENTS.md:19](../../../AGENTS.md#L19) |
+| Modify Secrets | **Forbidden** | [AGENTS.md:18](../../../AGENTS.md#L18) |
 
-Sources: [AGENTS.md:9-20](AGENTS.md#L9-L20)
+Sources: [AGENTS.md:9-20](../../../AGENTS.md#L9-L20)
 
 ### Branch Protection Rules
 Funding configurations and other `.github` metadata are protected by the "Protect main" ruleset. This ruleset requires pull requests and status checks (such as CodeRabbit) before changes can be merged into the `main` branch.
@@ -84,7 +84,7 @@ graph TD
 ```
 
 This flow illustrates how modifications to configuration files are gated by automated reviews.
-Sources: [branch-ruleset-template.json:16-52](branch-ruleset-template.json#L16-L52), [README.md:20-22](README.md#L20-L22)
+Sources: [branch-ruleset-template.json:16-52](../../../branch-ruleset-template.json#L16-L52), [README.md:20-22](../../../README.md#L20-L22)
 
 ## Implementation Details
 
@@ -92,7 +92,7 @@ The funding configuration is intended to be static once deployed but resides wit
 
 ### Scope of Security Policy
 The `SECURITY.md` file explicitly includes "GitHub Actions-workflows and repo-konfigurationen" (repo configuration) within its scope. This means any vulnerability or unauthorized change in the funding setup should be reported through the private security channels provided.
-Sources: [SECURITY.md:36-37](SECURITY.md#L36-L37)
+Sources: [SECURITY.md:36-37](../../../SECURITY.md#L36-L37)
 
 ### Usage in New Repositories
 To implement the funding configuration in a new project, developers follow the standard copy procedure:
@@ -101,7 +101,7 @@ To implement the funding configuration in a new project, developers follow the s
 2. Ensure the file reflects the correct sponsorship links for the specific project.
 3. Apply branch rules using `apply-ruleset.sh` to protect the configuration from unauthorized direct pushes.
 
-Sources: [README.md:92-108](README.md#L92-L108), [apply-ruleset.sh:9-13](apply-ruleset.sh#L9-L13)
+Sources: [README.md:92-108](../../../README.md#L92-L108), [apply-ruleset.sh:9-13](../../../apply-ruleset.sh#L9-L13)
 
 ## Summary
 The Funding Configuration within the `repo-standard` project provides a unified approach to project sponsorship. By utilizing `.github/FUNDING.yml` as a template and enforcing strict governance through AI agent guidelines and branch protection rules, the `blixten85` organization ensures that all repositories are consistently prepared for community support while maintaining high security standards for repository metadata.

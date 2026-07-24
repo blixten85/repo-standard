@@ -8,12 +8,12 @@ wiki_page_id: "page-pr-issue-templates"
 
 The following files were used as context for generating this wiki page:
 
-- [.github/pull_request_template.md](.github/pull_request_template.md)
-- [README.md](README.md)
-- [SECURITY.md](SECURITY.md)
-- [AGENTS.md](AGENTS.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [apply-ruleset.sh](apply-ruleset.sh)
+- [.github/pull_request_template.md](../../../.github/pull_request_template.md)
+- [README.md](../../../README.md)
+- [SECURITY.md](../../../SECURITY.md)
+- [AGENTS.md](../../../AGENTS.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
 </details>
 
 # Pull Request and Issue Templates
@@ -22,7 +22,7 @@ The `repo-standard` project serves as a "gold standard" template repository for 
 
 The templates are integrated with a broader automation ecosystem, including CodeRabbit for automated PR reviews and specific branch protection rules applied to the `main` branch. This structure is designed to be copied into new repositories to provide an immediate, standardized development environment.
 
-Sources: [README.md:1-8](README.md#L1-L8), [README.md:12-21](README.md#L12-L21)
+Sources: [README.md:1-8](../../../README.md#L1-L8), [README.md:12-21](../../../README.md#L12-L21)
 
 ## Pull Request Infrastructure
 
@@ -48,7 +48,7 @@ flowchart TD
 ```
 
 The diagram shows the standard flow from branch creation to merge, highlighting that agents can open PRs but cannot bypass manual reviews or branch protection.
-Sources: [AGENTS.md:10-23](AGENTS.md#L10-L23), [branch-ruleset-template.json:18-35](branch-ruleset-template.json#L18-L35), [README.md:16](README.md#L16)
+Sources: [AGENTS.md:10-23](../../../AGENTS.md#L10-L23), [branch-ruleset-template.json:18-35](../../../branch-ruleset-template.json#L18-L35), [README.md:16](../../../README.md#L16)
 
 ### Branch Protection and Merge Rules
 
@@ -62,7 +62,7 @@ PRs are governed by a branch ruleset defined in `branch-ruleset-template.json`. 
 | **Merge Methods** | Only `squash` and `rebase` are allowed |
 | **Stability** | Stale reviews are dismissed on new pushes |
 
-Sources: [branch-ruleset-template.json:18-50](branch-ruleset-template.json#L18-L50), [README.md:21](README.md#L21)
+Sources: [branch-ruleset-template.json:18-50](../../../branch-ruleset-template.json#L18-L50), [README.md:21](../../../README.md#L21)
 
 ## Issue and Vulnerability Management
 
@@ -84,7 +84,7 @@ flowchart TD
 ```
 
 The diagram outlines the private disclosure path for security-related findings.
-Sources: [SECURITY.md:5-18](SECURITY.md#L5-L18)
+Sources: [SECURITY.md:5-18](../../../SECURITY.md#L5-L18)
 
 ### Security Scope and Exclusions
 
@@ -96,7 +96,7 @@ The templates and security policy apply to specific components within the organi
 | **Applications** | iOS/macOS App, Linux GUI | External API/OAuth services (Google, Dropbox) |
 | **Infrastructure** | GitHub Actions, Repo Config | - |
 
-Sources: [SECURITY.md:28-40](SECURITY.md#L28-L40)
+Sources: [SECURITY.md:28-40](../../../SECURITY.md#L28-L40)
 
 ## Implementation and Automation
 
@@ -114,7 +114,7 @@ REPO="${1:?Usage: ./apply-ruleset.sh <repo-namn>}"
 gh api --method POST "repos/blixten85/$REPO/rulesets" --input "$(dirname "$0")/branch-ruleset-template.json"
 ```
 
-Sources: [apply-ruleset.sh:1-12](apply-ruleset.sh#L1-L12), [README.md:73-76](README.md#L73-L76)
+Sources: [apply-ruleset.sh:1-12](../../../apply-ruleset.sh#L1-L12), [README.md:73-76](../../../README.md#L73-L76)
 
 ### Agent Guidelines
 
@@ -126,7 +126,7 @@ Repositories include `AGENTS.md` and `CLAUDE.md`, which provide instructions for
 - Credentials and secrets must never be committed.
 - Force pushing is strictly prohibited.
 
-Sources: [AGENTS.md:1-29](AGENTS.md#L1-L29), [CLAUDE.md:1-8](CLAUDE.md#L1-L8), [README.md:14](README.md#L14)
+Sources: [AGENTS.md:1-29](../../../AGENTS.md#L1-L29), [CLAUDE.md:1-8](../../../CLAUDE.md#L1-L8), [README.md:14](../../../README.md#L14)
 
 ## Summary
 

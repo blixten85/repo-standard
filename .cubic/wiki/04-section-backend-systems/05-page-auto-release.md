@@ -8,11 +8,11 @@ wiki_page_id: "page-auto-release"
 
 The following files were used as context for generating this wiki page:
 
-- [.github/workflows/auto-release.yml](.github/workflows/auto-release.yml)
-- [README.md](README.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [apply-ruleset.sh](apply-ruleset.sh)
-- [AGENTS.md](AGENTS.md)
+- [.github/workflows/auto-release.yml](../../../.github/workflows/auto-release.yml)
+- [README.md](../../../README.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
+- [AGENTS.md](../../../AGENTS.md)
 </details>
 
 # Auto-release Workflow
@@ -21,7 +21,7 @@ The Auto-release Workflow is a core automation component within the `repo-standa
 
 This system works in conjunction with branch protection rules and CI/CD automation to maintain a high-quality codebase. By automating the release process, it reduces manual intervention and ensures that every release adheres to the established repository standards.
 
-Sources: [README.md:16](README.md#L16), [README.md:21-23](README.md#L21-L23)
+Sources: [README.md:16](../../../README.md#L16), [README.md:21-23](../../../README.md#L21-L23)
 
 ## Workflow Architecture and Integration
 
@@ -41,7 +41,7 @@ flowchart TD
 ```
 
 The diagram above illustrates the high-level logic where releases are contingent upon passing mandatory status checks.
-Sources: [README.md:21-30](README.md#L21-L30), [branch-ruleset-template.json:34-51](branch-ruleset-template.json#L34-L51)
+Sources: [README.md:21-30](../../../README.md#L21-L30), [branch-ruleset-template.json:34-51](../../../branch-ruleset-template.json#L34-L51)
 
 ### Relationship with Branch Rules
 
@@ -53,7 +53,7 @@ The `auto-release.yml` workflow relies on the enforcement of branch rules define
 | **Automation Workflow** | Executes release logic | `.github/workflows/auto-release.yml` |
 | **Ruleset Applicator** | Deploys protection to new repos | `apply-ruleset.sh` |
 
-Sources: [branch-ruleset-template.json:1-33](branch-ruleset-template.json#L1-L33), [apply-ruleset.sh:1-10](apply-ruleset.sh#L1-L10)
+Sources: [branch-ruleset-template.json:1-33](../../../branch-ruleset-template.json#L1-L33), [apply-ruleset.sh:1-10](../../../apply-ruleset.sh#L1-L10)
 
 ## Security and Permissions
 
@@ -66,7 +66,7 @@ According to the AI Agent Guide, while agents are allowed to create branches and
 *  Merging Pull Requests.
 *  Modifying GitHub organization settings.
 
-Sources: [AGENTS.md:10-21](AGENTS.md#L10-L21)
+Sources: [AGENTS.md:10-21](../../../AGENTS.md#L10-L21)
 
 ### Protected Operations
 
@@ -84,7 +84,7 @@ sequenceDiagram
 ```
 
 The diagram shows that security-critical configurations supporting the release environment must be performed by a human operator.
-Sources: [apply-ruleset.sh:2-5](apply-ruleset.sh#L2-L5), [AGENTS.md:16-21](AGENTS.md#L16-L21)
+Sources: [apply-ruleset.sh:2-5](../../../apply-ruleset.sh#L2-L5), [AGENTS.md:16-21](../../../AGENTS.md#L16-L21)
 
 ## Implementation in New Repositories
 
@@ -94,7 +94,7 @@ When a new repository is created using the `repo-standard` template, the auto-re
 2.  **Ruleset Application:** The operator runs `./apply-ruleset.sh <repo-name>` to activate the protection layers required for safe releases.
 3.  **Status Check Configuration:** Users must manually add repository-specific CI jobs (e.g., `test`, `lint`) to the `required_status_checks` list via the GitHub API to ensure the release workflow only triggers on healthy code.
 
-Sources: [README.md:71-80](README.md#L71-L80), [apply-ruleset.sh:11-14](apply-ruleset.sh#L11-L14)
+Sources: [README.md:71-80](../../../README.md#L71-L80), [apply-ruleset.sh:11-14](../../../apply-ruleset.sh#L11-L14)
 
 ## Summary
 

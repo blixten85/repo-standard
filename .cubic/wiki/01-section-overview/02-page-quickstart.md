@@ -8,12 +8,12 @@ wiki_page_id: "page-quickstart"
 
 The following files were used as context for generating this wiki page:
 
-- [README.md](README.md)
-- [apply-ruleset.sh](apply-ruleset.sh)
-- [AGENTS.md](AGENTS.md)
-- [CLAUDE.md](CLAUDE.md)
-- [SECURITY.md](SECURITY.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
+- [README.md](../../../README.md)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
+- [AGENTS.md](../../../AGENTS.md)
+- [CLAUDE.md](../../../CLAUDE.md)
+- [SECURITY.md](../../../SECURITY.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
 </details>
 
 # Quickstart Guide for New Repositories
@@ -22,7 +22,7 @@ The `repo-standard` repository serves as a "gold standard" template for all repo
 
 This guide outlines the mandatory steps for initializing a new repository, including the configuration of AI agent instructions, scheduling dependency updates to avoid rate limits, and applying standardized branch protection rules.
 
-Sources: [README.md:1-6](README.md#L1-L6)
+Sources: [README.md:1-6](../../../README.md#L1-L6)
 
 ## 1. Initial Repository Setup
 
@@ -40,7 +40,7 @@ The following files must be present in every repository to ensure compliance wit
 | `.github/dependabot.yml` | Configuration for automated dependency updates. |
 | `.github/workflows/` | Core automation (10 standard workflows) including CodeQL and auto-releases. |
 
-Sources: [README.md:8-16](README.md#L8-L16), [README.md:20-29](README.md#L20-L29)
+Sources: [README.md:8-16](../../../README.md#L8-L16), [README.md:20-29](../../../README.md#L20-L29)
 
 ## 2. Configuring AI Agent Instructions
 
@@ -69,7 +69,7 @@ flowchart TD
 
 *Logic flow showing what an AI agent is permitted to perform versus strictly prohibited actions.*
 
-Sources: [AGENTS.md:7-24](AGENTS.md#L7-L24), [CLAUDE.md:1-7](CLAUDE.md#L1-L7)
+Sources: [AGENTS.md:7-24](../../../AGENTS.md#L7-L24), [CLAUDE.md:1-7](../../../CLAUDE.md#L1-L7)
 
 ## 3. Dependabot and CodeRabbit Rate-Limit Management
 
@@ -84,7 +84,7 @@ Dependabot updates are consolidated into Wednesday and Saturday nights. When add
 | ops-hub | Wednesday 01:00–01:30 |
 | scraper | Wednesday 23:00–23:30 |
 
-Sources: [README.md:31-62](README.md#L31-L62)
+Sources: [README.md:31-62](../../../README.md#L31-L62)
 
 ## 4. Branch Protection and Rulesets
 
@@ -113,7 +113,7 @@ The `branch-ruleset-template.json` enforces the following:
 *  **Status Checks:** `CodeRabbit` is a mandatory check.
 *  **Restrictions:** Non-fast-forward pushes and branch deletions are disabled.
 
-Sources: [apply-ruleset.sh:1-12](apply-ruleset.sh#L1-L12), [branch-ruleset-template.json:1-50](branch-ruleset-template.json#L1-L50)
+Sources: [apply-ruleset.sh:1-12](../../../apply-ruleset.sh#L1-L12), [branch-ruleset-template.json:1-50](../../../branch-ruleset-template.json#L1-L50)
 
 ## 5. Security and Vulnerability Reporting
 
@@ -124,10 +124,10 @@ The `SECURITY.md` file defines how vulnerabilities are handled. The organization
 2.  **Private Report:** Email to `dev@denied.se` or via the GitHub Security tab.
 3.  **Timeline:** Acknowledgment within 48 hours; assessment within 5 business days.
 
-Sources: [SECURITY.md:1-24](SECURITY.md#L1-L24)
+Sources: [SECURITY.md:1-24](../../../SECURITY.md#L1-L24)
 
 ## Summary
 
 The initialization of a new repository involves cloning the standard structure, configuring unique scheduling to manage organization-wide rate limits, and manually applying branch protection rules via the provided shell script. Following these steps ensures the repository is integrated into the automated CI/CD and AI-assisted review pipelines of the `blixten85` organization.
 
-Sources: [README.md:76-85](README.md#L76-L85)
+Sources: [README.md:76-85](../../../README.md#L76-L85)

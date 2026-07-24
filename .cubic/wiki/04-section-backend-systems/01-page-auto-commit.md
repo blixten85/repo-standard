@@ -8,12 +8,12 @@ wiki_page_id: "page-auto-commit"
 
 The following files were used as context for generating this wiki page:
 
-- [.github/workflows/auto-commit.yml](.github/workflows/auto-commit.yml)
-- [README.md](README.md)
-- [AGENTS.md](AGENTS.md)
-- [branch-ruleset-template.json](branch-ruleset-template.json)
-- [apply-ruleset.sh](apply-ruleset.sh)
-- [SECURITY.md](SECURITY.md)
+- [.github/workflows/auto-commit.yml](../../../.github/workflows/auto-commit.yml)
+- [README.md](../../../README.md)
+- [AGENTS.md](../../../AGENTS.md)
+- [branch-ruleset-template.json](../../../branch-ruleset-template.json)
+- [apply-ruleset.sh](../../../apply-ruleset.sh)
+- [SECURITY.md](../../../SECURITY.md)
 </details>
 
 # Auto-commit Workflow
@@ -22,7 +22,7 @@ The Auto-commit Workflow is a core component of the repository's automation suit
 
 This workflow operates alongside other automation tools such as `auto-label.yml`, `auto-merge.yml`, and `ci-autofix.yml` to maintain repository health. Its primary scope includes managing automated commits that do not violate organization-level restrictions, such as the prohibition against AI agents modifying branch protections or pushing directly to the main branch.
 
-Sources: [README.md:3-8](README.md#L3-L8), [README.md:19-21](README.md#L19-L21), [AGENTS.md:14-25](AGENTS.md#L14-L25)
+Sources: [README.md:3-8](../../../README.md#L3-L8), [README.md:19-21](../../../README.md#L19-L21), [AGENTS.md:14-25](../../../AGENTS.md#L14-L25)
 
 ## Architecture and Integration
 
@@ -54,7 +54,7 @@ flowchart TD
 ```
 
 The diagram shows that while AI agents can trigger automation, all resulting commits must pass through the branch ruleset, which includes mandatory CodeRabbit reviews.
-Sources: [README.md:25-28](README.md#L25-L28), [branch-ruleset-template.json:1-45](branch-ruleset-template.json#L1-L45)
+Sources: [README.md:25-28](../../../README.md#L25-L28), [branch-ruleset-template.json:1-45](../../../branch-ruleset-template.json#L1-L45)
 
 ### Automation Ecosystem
 The Auto-commit Workflow is one of several standard workflows provided in the `.github/workflows/` directory.
@@ -67,7 +67,7 @@ The Auto-commit Workflow is one of several standard workflows provided in the `.
 | `ci-autofix.yml` | Automatically fixes linting or formatting issues. |
 | `security-alerts-sync.yml` | Synchronizes security vulnerability data. |
 
-Sources: [README.md:19-22](README.md#L19-L22)
+Sources: [README.md:19-22](../../../README.md#L19-L22)
 
 ## Security and Permission Boundaries
 
@@ -83,7 +83,7 @@ The execution of automated commits is strictly governed by the organization's se
 | Modify Secrets | Forbidden |
 | Change Org Settings | Forbidden |
 
-Sources: [AGENTS.md:10-25](AGENTS.md#L10-L25)
+Sources: [AGENTS.md:10-25](../../../AGENTS.md#L10-L25)
 
 ### Branch Protection Logic
 The workflow must respect the `Protect main` ruleset. This ruleset is applied using the `apply-ruleset.sh` script, which specifically blocks agents from modifying branch protections via the API (CI Bypass category).
@@ -104,7 +104,7 @@ sequenceDiagram
 ```
 
 The workflow logic ensures that any automated changes are funneled through the Pull Request process, requiring at least one approving review and successful status checks from CodeRabbit.
-Sources: [AGENTS.md:14-19](AGENTS.md#L14-L19), [branch-ruleset-template.json:10-40](branch-ruleset-template.json#L10-L40), [apply-ruleset.sh:1-10](apply-ruleset.sh#L1-L10)
+Sources: [AGENTS.md:14-19](../../../AGENTS.md#L14-L19), [branch-ruleset-template.json:10-40](../../../branch-ruleset-template.json#L10-L40), [apply-ruleset.sh:1-10](../../../apply-ruleset.sh#L1-L10)
 
 ## Implementation Details
 
@@ -115,7 +115,7 @@ The workflow is designed to be portable across the `blixten85` organization. Whe
 2. **Prerequisites:** The repository must have the CodeRabbit GitHub App installed, as it is a required status check in the standard ruleset.
 3. **Branch Target:** By default, the ruleset targets `refs/heads/main`.
 
-Sources: [README.md:53-62](README.md#L53-L62), [branch-ruleset-template.json:6-10](branch-ruleset-template.json#L6-L10)
+Sources: [README.md:53-62](../../../README.md#L53-L62), [branch-ruleset-template.json:6-10](../../../branch-ruleset-template.json#L6-L10)
 
 ### Rule Enforcement Snippet
 The following JSON structure from the template defines the environment in which the workflow operates, specifically requiring CodeRabbit integration (ID `347564`).
@@ -135,7 +135,7 @@ The following JSON structure from the template defines the environment in which 
 }
 ```
 
-Sources: [branch-ruleset-template.json:35-44](branch-ruleset-template.json#L35-L44)
+Sources: [branch-ruleset-template.json:35-44](../../../branch-ruleset-template.json#L35-L44)
 
 ## Summary
 The Auto-commit Workflow provides a standardized mechanism for automated repository maintenance within the `repo-standard` framework. It is strictly constrained by branch protection rules that mandate PR reviews and external status checks, ensuring that automated commits do not bypass security protocols or project conventions.
