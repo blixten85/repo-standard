@@ -138,6 +138,28 @@ svarar `404` på samtliga repon — funktionen är inte aktiverad. Behörigheten
 hade gett åtkomst till ingenting och blivit ännu en post ingen minns syftet
 med.
 
+## Cloudflare-tokens på kontot (verifierad karta, 2026-07-27)
+
+Kontot har **5 riktiga Cloudflare-tokens**, inte de "40 nycklar" det kändes
+som efter en förmiddags förvirring — problemet var att samma token hade olika
+namn i olika repon, och att två Workers oberoende av varandra byggt samma
+funktion. Se [[project-cloudflare-account-tokens-map]] för hur kartan togs
+fram (kodgenomsökning av alla 12 Workers + alla repons GitHub-secrets, inga
+antaganden).
+
+| Cloudflare-namn | Behörighet | Secret-namn | Konsument |
+|---|---|---|---|
+| `politiker-webapp -- deploy` | Full write (Workers/D1/KV/R2/DNS) | `CLOUDFLARE_API_TOKEN` | GitHub Actions: politiker-webapp, product-describer-cloudflare, klarsprak, politiker-kontakter (wrangler härleder kontot ur tokenet — `CLOUDFLARE_ACCOUNT_ID` krävs inte) |
+| `politiker-webapp -- readonly` | D1/Workers Scripts/Access Read + Zone Read (denied.se) | `POLITIKER_WEBAPP_READONLY_TOKEN` | Worker `ops-hub` (var-5-min-hälsokontroll för politiker.denied.se) |
+| `admin -- manage-tokens` | Account API Tokens Write | `CF_ADMIN_TOKEN` | Worker `cf-token-rotator` (product-describer-cloudflare/token-rotator) — **enda** konsument sedan ops-hubs egen dubblettkopia togs bort 2026-07-27 |
+| `mp100-server` | DNS/Tunnel/Access Write (denied.se) | *(lokalt på mp100, aldrig i git)* | cloudflared-tunneln — rör aldrig, hårdkodat undantag i `cf-token-rotator` |
+| `politiker-webapp-healthcheck` | Workers Scripts + Access Read | `POLITIKER_WEBAPP_HEALTHCHECK_TOKEN` | Worker `politiker-webapp-healthcheck` (daglig 05:00 UTC-sammanfattning) |
+
+Två ytterligare CF-tokens existerar men låg utanför denna genomgång —
+`crowdsec-decisions-sync-worker`s `CF_API_TOKEN` och
+`politiker-webapp-app`s `CF_ANALYTICS_TOKEN`. Namnge dem enligt Regel 4 nästa
+gång någon rör den koden.
+
 ## Årlig genomgång
 
 När utgångsmailet kommer, gå igenom hela listan i ett svep:
