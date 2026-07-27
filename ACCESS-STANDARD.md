@@ -138,27 +138,45 @@ svarar `404` på samtliga repon — funktionen är inte aktiverad. Behörigheten
 hade gett åtkomst till ingenting och blivit ännu en post ingen minns syftet
 med.
 
-## Cloudflare-tokens på kontot (verifierad karta, 2026-07-27)
+## Cloudflare-tokens på kontot (verifierad karta, 2026-07-27, rättad 2026-07-27 kväll)
 
-Kontot har **5 riktiga Cloudflare-tokens**, inte de "40 nycklar" det kändes
-som efter en förmiddags förvirring — problemet var att samma token hade olika
-namn i olika repon, och att två Workers oberoende av varandra byggt samma
-funktion. Se [[project-cloudflare-account-tokens-map]] för hur kartan togs
-fram (kodgenomsökning av alla 12 Workers + alla repons GitHub-secrets, inga
-antaganden).
+Kontot har **4 riktiga Cloudflare Account API-tokens**, inte de "40 nycklar"
+det kändes som efter en förmiddags förvirring — problemet var att samma token
+hade olika namn i olika repon, och att två Workers oberoende av varandra
+byggt samma funktion. Räkningen är dubbelkontrollerad direkt mot dashboardens
+"Showing X of X" — lita på den räkningen, inte på en tidigare dokumenterad
+lista. Se [[project-cloudflare-account-tokens-map]] för hela historien,
+inklusive en femte token som visade sig vara en föräldralös kvarleva och
+raderades samma kväll.
 
 | Cloudflare-namn | Behörighet | Secret-namn | Konsument |
 |---|---|---|---|
 | `politiker-webapp -- deploy` | Full write (Workers/D1/KV/R2/DNS) | `CLOUDFLARE_API_TOKEN` | GitHub Actions: politiker-webapp, product-describer-cloudflare, klarsprak, politiker-kontakter (wrangler härleder kontot ur tokenet — `CLOUDFLARE_ACCOUNT_ID` krävs inte) |
 | `politiker-webapp -- readonly` | D1/Workers Scripts/Access Read + Zone Read (denied.se) | `POLITIKER_WEBAPP_READONLY_TOKEN` | Worker `ops-hub` (var-5-min-hälsokontroll för politiker.denied.se) |
-| `admin -- manage-tokens` | Account API Tokens Write | `CF_ADMIN_TOKEN` | Worker `cf-token-rotator` (product-describer-cloudflare/token-rotator) — **enda** konsument sedan ops-hubs egen dubblettkopia togs bort 2026-07-27 |
-| `mp100-server` | DNS/Tunnel/Access Write (denied.se) | *(lokalt på mp100, aldrig i git)* | cloudflared-tunneln — rör aldrig, hårdkodat undantag i `cf-token-rotator` |
+| `admin -- manage-tokens` | Account API Tokens Write | `CF_ADMIN_TOKEN` | Worker `cf-token-rotator` (product-describer-cloudflare/token-rotator) — **enda** konsument sedan ops-hubs egen dubblettkopia togs bort 2026-07-27. Förnyelsen (`0 3 * * *`) förlänger bara `expires_on` — värdet ändras aldrig, så inget behöver flyttas mellan platser vid en normal förnyelse |
 | `politiker-webapp-healthcheck` | Workers Scripts + Access Read | `POLITIKER_WEBAPP_HEALTHCHECK_TOKEN` | Worker `politiker-webapp-healthcheck` (daglig 05:00 UTC-sammanfattning) |
 
-Två ytterligare CF-tokens existerar men låg utanför denna genomgång —
-`crowdsec-decisions-sync-worker`s `CF_API_TOKEN` och
-`politiker-webapp-app`s `CF_ANALYTICS_TOKEN`. Namnge dem enligt Regel 4 nästa
-gång någon rör den koden.
+**`mp100-server`-token gick inte att verifiera** — en tidigare karta påstod
+att ett femte token med DNS/Tunnel/Access-behörighet fanns för mp100:s
+cloudflared-tunnel. Sökning på "mp100" i Account API Tokens gav **inga
+träffar**, och mp100 saknar helt `cloudflared` (ingen binär, ingen
+systemd-tjänst, ingen config) — tunneln existerar sannolikt inte längre, om
+den någonsin gjorde. Ta bort denna rad helt om ingen motbevisar det inom en
+rimlig tid.
+
+**`crowdsec-decisions-sync-worker`s `CF_API_TOKEN`** är ett medvetet undantag
+från Regel 4: namnet är hårdkodat i CrowdSecs egen officiella prebyggda bundle
+(`crowdsecurity/cs-cloudflare-worker-bouncer`, vendored binär i
+`cs-cloudflare-worker-bouncer-install`). Ett namnbyte skulle brytas vid varje
+uppdatering från uppströms — lämnas orört.
+
+**`politiker-webapp-app`s `CF_ANALYTICS_TOKEN` + `CF_ACCOUNT_ID`** var döda
+(Regel 9 i praktiken): funktionen som skapade dem 2026-06-27 (Cloudflare
+GraphQL Analytics för besöksstatistik) skrevs senare om till en egen
+D1-baserad lösning (`visits`-tabellen) utan att någon tog bort secreten.
+Borttagna 2026-07-27. Det bakomliggande CF-tokenet kan fortfarande finnas
+kvar i dashboarden som en föräldralös post — kolla API Tokens-listan efter
+något som inte matchar tabellen ovan och radera det där.
 
 ## Årlig genomgång
 
