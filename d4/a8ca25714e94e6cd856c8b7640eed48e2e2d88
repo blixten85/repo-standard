@@ -1,0 +1,19 @@
+ACCESS-STANDARD.md
+  s_a7d7d357735ad2::t_a4ce0235abc0fc 193-202
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "d4a8ca25714e94e6cd856c8b7640eed48e2e2d88",
+  "prompts": {},
+  "sessions": {
+    "s_a7d7d357735ad2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "01012648-7a48-4f93-9033-1842911a0230",
+        "model": "unknown"
+      },
+      "human_author": "Anders Eriksson <36226327+blixten85@users.noreply.github.com>"
+    }
+  }
+}
