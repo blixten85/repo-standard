@@ -190,3 +190,13 @@ När utgångsmailet kommer, gå igenom hela listan i ett svep:
 
 Radera hellre än att förlänga. Behövs den igen tar det två minuter att prägla
 en ny — och då vet du åtminstone varför den finns.
+
+## Kända undantag utan kodifierad konfiguration
+
+`crowdsec-cloudflare-worker-bouncer` och `crowdsec-decisions-sync-worker` har
+Logs+Traces påslagna som **manuella dashboard-toggles**, inte i en
+`wrangler.jsonc` — installer-appen som deployade dem
+(`cs-cloudflare-worker-bouncer-install`) är arkiverad (2026-07-26, publikt
+exponerad tokeninmatning). Ingen kod sätter observability vid en eventuell
+framtida ominstallation. Kolla vid varje årlig genomgång att Logs+Traces
+fortfarande är påslagna på båda — annars måste det göras för hand igen.
