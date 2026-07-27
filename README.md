@@ -10,6 +10,7 @@ behövs till ett nytt repo istället för att bygga från grunden varje gång.
 |---|---|
 | `LICENSE` | MIT |
 | `SECURITY.md` | Standard säkerhetspolicy |
+| `ACCESS-STANDARD.md` | **Regler för tokens, secrets och variabler** — inbyggd `GITHUB_TOKEN` först, GitHub App före PAT, namngivning, omfång, utgång. Läs innan du lägger till en secret någonstans |
 | `AGENTS.md` / `CLAUDE.md` | AI-agent-instruktioner — **fyll i platshållarna** (`<repo-name>`, konventioner) innan användning |
 | `.coderabbit.yaml` | Aktiverar CodeRabbits auto-review |
 | `.github/dependabot.yml` | Dependency-uppdateringar (github-actions). **`schedule`-fältet MÅSTE sättas till ett unikt tidsfönster** — se "CodeRabbit rate-limit & schemaläggning" nedan |
