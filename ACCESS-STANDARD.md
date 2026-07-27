@@ -155,10 +155,19 @@ antaganden).
 | `mp100-server` | DNS/Tunnel/Access Write (denied.se) | *(lokalt på mp100, aldrig i git)* | cloudflared-tunneln — rör aldrig, hårdkodat undantag i `cf-token-rotator` |
 | `politiker-webapp-healthcheck` | Workers Scripts + Access Read | `POLITIKER_WEBAPP_HEALTHCHECK_TOKEN` | Worker `politiker-webapp-healthcheck` (daglig 05:00 UTC-sammanfattning) |
 
-Två ytterligare CF-tokens existerar men låg utanför denna genomgång —
-`crowdsec-decisions-sync-worker`s `CF_API_TOKEN` och
-`politiker-webapp-app`s `CF_ANALYTICS_TOKEN`. Namnge dem enligt Regel 4 nästa
-gång någon rör den koden.
+**`crowdsec-decisions-sync-worker`s `CF_API_TOKEN`** är ett medvetet undantag
+från Regel 4: namnet är hårdkodat i CrowdSecs egen officiella prebyggda bundle
+(`crowdsecurity/cs-cloudflare-worker-bouncer`, vendored binär i
+`cs-cloudflare-worker-bouncer-install`). Ett namnbyte skulle brytas vid varje
+uppdatering från uppströms — lämnas orört.
+
+**`politiker-webapp-app`s `CF_ANALYTICS_TOKEN` + `CF_ACCOUNT_ID`** var döda
+(Regel 9 i praktiken): funktionen som skapade dem 2026-06-27 (Cloudflare
+GraphQL Analytics för besöksstatistik) skrevs senare om till en egen
+D1-baserad lösning (`visits`-tabellen) utan att någon tog bort secreten.
+Borttagna 2026-07-27. Det bakomliggande CF-tokenet kan fortfarande finnas
+kvar i dashboarden som en föräldralös post — kolla API Tokens-listan efter
+något som inte matchar tabellen ovan och radera det där.
 
 ## Årlig genomgång
 
