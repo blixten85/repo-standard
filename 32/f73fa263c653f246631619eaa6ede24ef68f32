@@ -1,0 +1,19 @@
+.github/workflows/auto-merge.yml
+  s_a7d7d357735ad2::t_380b89dbfff4d4 75-80,97,114,131
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "32f73fa263c653f246631619eaa6ede24ef68f32",
+  "prompts": {},
+  "sessions": {
+    "s_a7d7d357735ad2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "01012648-7a48-4f93-9033-1842911a0230",
+        "model": "unknown"
+      },
+      "human_author": "Anders Eriksson <36226327+blixten85@users.noreply.github.com>"
+    }
+  }
+}
