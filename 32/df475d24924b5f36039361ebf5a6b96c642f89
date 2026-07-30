@@ -1,0 +1,19 @@
+ACCESS-STANDARD.md
+  s_5450fa01cdd51a::t_b4d2efb22bb143 141-173,197-214
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.17",
+  "base_commit_sha": "32df475d24924b5f36039361ebf5a6b96c642f89",
+  "prompts": {},
+  "sessions": {
+    "s_5450fa01cdd51a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0a5390c4-9a4a-4e85-bcde-6ddad9d8bfcf",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Anders Eriksson <36226327+blixten85@users.noreply.github.com>"
+    }
+  }
+}
